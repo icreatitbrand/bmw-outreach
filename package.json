@@ -1,0 +1,29 @@
+{
+  "name": "bmw-outreach",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Businessmen & Women Outreach (BMW Outreach) landing page — God is your business partner.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "convex:dev": "convex dev"
+  },
+  "dependencies": {
+    "convex": "^1.25.0",
+    "next": "^15.5.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "^5.8.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

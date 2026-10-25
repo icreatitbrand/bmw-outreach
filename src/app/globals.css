@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+/*
+  Design tokens — BMW Outreach, black & gold luxury palette
+  (client-provided: #000000, #DFB011, #DBBB5F, #D0C09E, #E6E5E0).
+  Change the brand here, in one place.
+*/
+@theme {
+  --color-primary: #000000; /* black — authority */
+  --color-primary-deep: #161616; /* hover/emphasis on black */
+  --color-gold: #dfb011; /* vivid gold — CTAs and highlights */
+  --color-gold-soft: #dbbb5f; /* soft gold — chips, tints */
+  --color-tan: #d0c09e; /* muted tan — quiet fills */
+  --color-ivory: #e6e5e0; /* background */
+  --color-ivory-deep: #dedcd4; /* alternate band */
+  --color-ink: #0a0a0a; /* near-black text on light */
+  --color-muted: #57544c; /* warm gray muted text */
+  --color-line: #cfccc2; /* warm stone borders */
+  --color-gold-dark: #8c6d00; /* darker gold for small text (AA on light) */
+
+  --font-display: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
+
+  --shadow-card: 0 4px 20px -2px rgb(0 0 0 / 0.07);
+  --shadow-card-hover: 0 10px 28px -4px rgb(0 0 0 / 0.12);
+  --shadow-gold: 0 8px 30px -6px rgb(223 176 17 / 0.5);
+  --shadow-modal: 0 24px 64px -12px rgb(0 0 0 / 0.5);
+
+  /* Motion tokens (Tailwind v4 generates animate-* utilities from these) */
+  --animate-ken-burns: ken-burns 9s ease-out both;
+  --animate-shimmer: shimmer 6s linear infinite;
+
+  --radius-card: 0.5rem;
+  --radius-hero: 0.75rem;
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible focus for keyboard users (WCAG 2.1 AA) */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Soft gold focus ring on form fields */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 1.5px solid var(--color-primary);
+  box-shadow: 0 0 0 4px rgb(223 176 17 / 0.25);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Wordmark helper */
+.wordmark-rule {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Luxurious animated gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(
+    90deg,
+    #dbbb5f,
+    #dfb011,
+    #f1e2a4,
+    #dfb011,
+    #dbbb5f
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: var(--animate-shimmer);
+}
+
+/* Thank-you modal animations (bottom sheet on mobile, fade on desktop) */
+@keyframes sheet-up {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Cinematic slow zoom for hero slides */
+@keyframes ken-burns {
+  from {
+    transform: scale(1.05) translateY(0);
+  }
+  to {
+    transform: scale(1.18) translateY(-2%);
+  }
+}
+
+/* Slow shine sweep for gold gradient text */
+@keyframes shimmer {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 200% 50%;
+  }
+}

@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+.env*.local
+.env
+*.tsbuildinfo
+next-env.d.ts
+.convex/
+
+# AI agent tooling bundles (not part of the site)
+.agents/
+.claude/
+AGENTS.md
+CLAUDE.md
+skills-lock.json
+.DS_Store
